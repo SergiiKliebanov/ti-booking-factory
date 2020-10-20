@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BookingFactory
 {
     public interface IBenefitCalculator
     {
-        Task<decimal> CaluclateBenefit(IEnumerable<Booking> bookings);
+        Task<decimal> CaluclateBenefit(int pharmacyId, decimal productPrice);
     }
 
     public class TestBenefitCalculator : IBenefitCalculator
@@ -15,11 +14,11 @@ namespace BookingFactory
 
         public TestBenefitCalculator(Dictionary<int, decimal> pharmacyCommissions) => this.pharmacyCommissions = pharmacyCommissions;
 
-        public Task<decimal> CaluclateBenefit(IEnumerable<Booking> bookings) => Task.FromResult(bookings.Sum(CalculateBeneift));
+        public Task<decimal> CaluclateBenefit(int pharmacyId, decimal productPrice) => Task.FromResult(CalculateBeneift(pharmacyId, productPrice));
 
-        decimal CalculateBeneift(Booking booking)
-            => pharmacyCommissions.TryGetValue(booking.PharmacyId, out var commission)
-            ? booking.Items.Sum(i => i.Price * i.Quantity * commission)
+        decimal CalculateBeneift(int pharmacyId, decimal productPrice)
+            => pharmacyCommissions.TryGetValue(pharmacyId, out var commission)
+            ? productPrice * commission
             : 0;
     }
 }

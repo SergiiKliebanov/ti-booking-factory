@@ -24,5 +24,7 @@ namespace BookingFactory
                     Stock = s.Stock.Where(i => products.Contains(i.ProductId)).ToArray()
                 });
         }
+
+        public void Dispose() { }
     }
 }

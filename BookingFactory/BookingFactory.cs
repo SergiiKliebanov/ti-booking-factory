@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace BookingFactory
 {
-    public class BookingFactory
+    public class BookingFactory : IDisposable
     {
         IStockProvider stockProvider;
 
@@ -14,6 +14,8 @@ namespace BookingFactory
         {
             throw new NotImplementedException();
         }
+
+        public void Dispose() => stockProvider.Dispose();
     }
 
     public struct Booking
