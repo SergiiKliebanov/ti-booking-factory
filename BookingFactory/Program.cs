@@ -27,7 +27,7 @@ class Program
             },
             new PharmacyStock
             {
-                PharmacyId = 2,
+                PharmacyId = 3,
                 Stock = new []
                 {
                     new ProductItem { ProductId = 1000, Quantity = 20, Price = 120 },
