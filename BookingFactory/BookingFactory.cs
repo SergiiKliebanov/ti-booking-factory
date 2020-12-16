@@ -12,6 +12,7 @@ namespace BookingFactory
 
         public Task<IEnumerable<Booking>> Book(IEnumerable<ProductItem> demand)
         {
+            //TODO: should return prosed bookings for incoming demand, resulting bookings should cover as much as possible of the demand and be as cheap as possible
             throw new NotImplementedException();
         }
 
