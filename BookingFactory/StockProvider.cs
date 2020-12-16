@@ -13,9 +13,9 @@ namespace BookingFactory
             this.stock = stock;
         }
 
-        public async Task<IEnumerable<PharmacyStock>> GetStock(IEnumerable<int> productIds)
+        public async Task<IEnumerable<PharmacyStock>> GetStock(IEnumerable<string> productIds)
         {
-            var products = new HashSet<int>(productIds);
+            var products = new HashSet<string>(productIds);
             return stock
                 .Where(s => s.Stock.Any(i => products.Contains(i.ProductId)))
                 .Select(s => new PharmacyStock
