@@ -21,7 +21,7 @@ namespace BookingFactory
 
     public struct Booking
     {
-        public int PharmacyId { get; set; }
+        public string PharmacyId { get; set; }
         public ProductItem[] Items { get; set; }
     }
 }
